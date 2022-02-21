@@ -1,5 +1,5 @@
 const GAME_PREF = {
-    "isDisabled": true,
+    "isDisabled": false,
     "arcadeMode": true,
     "altGameMode": false,
 }
