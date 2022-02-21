@@ -276,7 +276,7 @@ Runner.prototype = {
    * @return {boolean}
    */
   isDisabled() {
-    return false;
+    return GAME_PREF.isDisabled;
   },
 
   /**
@@ -328,7 +328,7 @@ Runner.prototype = {
    * @return {HTMLImageElement} The created element.
    */
   createImageElement(resourceName) {
-    const imgSrc = null;
+    const imgSrc = resourceName ? resourceName : null;
 
     if (imgSrc) {
       const el =
@@ -1377,7 +1377,7 @@ Runner.prototype = {
   isArcadeMode() {
     // In RTL languages the title is wrapped with the left to right mark
     // control characters &#x202A; and &#x202C but are invisible.
-    return true;
+    return GAME_PREF.arcadeMode;
   },
 
   /**
@@ -1509,7 +1509,7 @@ Runner.updateCanvasScaling = function(canvas, opt_width, opt_height) {
  * @return {boolean}
  */
 Runner.isAltGameModeEnabled = function() {
-  return true;
+  return GAME_PREF.altGameMode;
 };
 
 
