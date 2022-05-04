@@ -1222,7 +1222,7 @@ Runner.prototype = {
     this.syncHighestScore = true;
     highScore = Math.ceil(highScore);
     if (highScore < this.highestScore) {
-      localStorage.setItem("highScore", highScore);
+      localStorage.setItem("highScore", this.highestScore);
       return;
     }
     this.highestScore = highScore;
