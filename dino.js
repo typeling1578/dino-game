@@ -1011,9 +1011,7 @@ Runner.prototype = {
             this.loadSounds();
             this.setPlayStatus(true);
             this.update();
-            if (window.errorPageController) {
-              errorPageController.trackEasterEgg();
-            }
+            window['initializeEasterEggHighScore'](localStorage.getItem("highScore"));
           }
           // Start jump.
           if (!this.tRex.jumping && !this.tRex.ducking) {
@@ -1224,9 +1222,7 @@ Runner.prototype = {
     this.syncHighestScore = true;
     highScore = Math.ceil(highScore);
     if (highScore < this.highestScore) {
-      if (window.errorPageController) {
-        errorPageController.updateEasterEggHighScore(this.highestScore);
-      }
+      localStorage.setItem("highScore", highScore);
       return;
     }
     this.highestScore = highScore;
@@ -1243,11 +1239,11 @@ Runner.prototype = {
     this.distanceMeter.setHighScore(this.highestScore);
 
     // Store the new high score in the profile.
-    if (this.syncHighestScore && window.errorPageController) {
+    if (this.syncHighestScore) {
       if (opt_resetScore) {
-        errorPageController.resetEasterEggHighScore();
+        localStorage.removeItem("highScore");
       } else {
-        errorPageController.updateEasterEggHighScore(this.highestScore);
+        localStorage.setItem("highScore", this.highestScore);
       }
     }
   },
